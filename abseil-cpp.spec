@@ -2,8 +2,8 @@
 %define devname %mklibname absl -d
 
 Name:		abseil-cpp
-Version:	20200923.2
-Release:	3
+Version:	20200923.3
+Release:	1
 Summary:	C++ Common Libraries
 Group:		Development/C++
 License:	ASL 2.0
@@ -31,8 +31,8 @@ and we now want to provide those resources to the C++ community as a whole.
 
 %define local_lib_pkg() %{expand:\
 %package -n %{mklibname absl_%1 0} \
-Summary: %{summary} \
-Group: System/Libraries \
+Summary:	%{summary} \
+Group:		System/Libraries \
 %description -n %{mklibname absl_%1 0} \
 %{summary} \
 Package with library libsbsl_%{1}.so.%{major}. \
@@ -106,66 +106,66 @@ Package with library libsbsl_%{1}.so.%{major}. \
 %package -n %{devname}
 Summary:	Development files for %{name}
 Group:		Development/Other
-Requires: %{_lib}absl_base%{major} = %{EVRD}
-Requires: %{_lib}absl_bad_any_cast_impl%{major} = %{EVRD}
-Requires: %{_lib}absl_log_severity%{major} = %{EVRD}
-Requires: %{_lib}absl_bad_optional_access%{major} = %{EVRD}
-Requires: %{_lib}absl_malloc_internal%{major} = %{EVRD}
-Requires: %{_lib}absl_bad_variant_access%{major} = %{EVRD}
-Requires: %{_lib}absl_periodic_sampler%{major} = %{EVRD}
-Requires: %{_lib}absl_random_distributions%{major} = %{EVRD}
-Requires: %{_lib}absl_city%{major} = %{EVRD}
-Requires: %{_lib}absl_random_internal_distribution_test_util%{major} = %{EVRD}
-Requires: %{_lib}absl_civil_time%{major} = %{EVRD}
-Requires: %{_lib}absl_random_internal_platform%{major} = %{EVRD}
-Requires: %{_lib}absl_cord%{major} = %{EVRD}
-Requires: %{_lib}absl_random_internal_pool_urbg%{major} = %{EVRD}
-Requires: %{_lib}absl_debugging_internal%{major} = %{EVRD}
-Requires: %{_lib}absl_random_internal_randen_hwaes_impl%{major} = %{EVRD}
-Requires: %{_lib}absl_demangle_internal%{major} = %{EVRD}
-Requires: %{_lib}absl_random_internal_randen_hwaes%{major} = %{EVRD}
-Requires: %{_lib}absl_examine_stack%{major} = %{EVRD}
-Requires: %{_lib}absl_random_internal_randen_slow%{major} = %{EVRD}
-Requires: %{_lib}absl_exponential_biased%{major} = %{EVRD}
-Requires: %{_lib}absl_random_internal_randen%{major} = %{EVRD}
-Requires: %{_lib}absl_failure_signal_handler%{major} = %{EVRD}
-Requires: %{_lib}absl_random_internal_seed_material%{major} = %{EVRD}
-Requires: %{_lib}absl_flags_commandlineflag_internal%{major} = %{EVRD}
-Requires: %{_lib}absl_random_seed_gen_exception%{major} = %{EVRD}
-Requires: %{_lib}absl_flags_commandlineflag%{major} = %{EVRD}
-Requires: %{_lib}absl_random_seed_sequences%{major} = %{EVRD}
-Requires: %{_lib}absl_flags_config%{major} = %{EVRD}
-Requires: %{_lib}absl_raw_hash_set%{major} = %{EVRD}
-Requires: %{_lib}absl_flags_internal%{major} = %{EVRD}
-Requires: %{_lib}absl_raw_logging_internal%{major} = %{EVRD}
-Requires: %{_lib}absl_flags_marshalling%{major} = %{EVRD}
-Requires: %{_lib}absl_scoped_set_env%{major} = %{EVRD}
-Requires: %{_lib}absl_flags_parse%{major} = %{EVRD}
-Requires: %{_lib}absl_spinlock_wait%{major} = %{EVRD}
-Requires: %{_lib}absl_flags_private_handle_accessor%{major} = %{EVRD}
-Requires: %{_lib}absl_stacktrace%{major} = %{EVRD}
-Requires: %{_lib}absl_flags_program_name%{major} = %{EVRD}
-Requires: %{_lib}absl_statusor%{major} = %{EVRD}
-Requires: %{_lib}absl_flags_reflection%{major} = %{EVRD}
-Requires: %{_lib}absl_status%{major} = %{EVRD}
-Requires: %{_lib}absl_flags%{major} = %{EVRD}
-Requires: %{_lib}absl_strerror%{major} = %{EVRD}
-Requires: %{_lib}absl_flags_usage_internal%{major} = %{EVRD}
-Requires: %{_lib}absl_str_format_internal%{major} = %{EVRD}
-Requires: %{_lib}absl_flags_usage%{major} = %{EVRD}
-Requires: %{_lib}absl_strings_internal%{major} = %{EVRD}
-Requires: %{_lib}absl_graphcycles_internal%{major} = %{EVRD}
-Requires: %{_lib}absl_strings%{major} = %{EVRD}
-Requires: %{_lib}absl_hash%{major} = %{EVRD}
-Requires: %{_lib}absl_symbolize%{major} = %{EVRD}
-Requires: %{_lib}absl_hashtablez_sampler%{major} = %{EVRD}
-Requires: %{_lib}absl_synchronization%{major} = %{EVRD}
-Requires: %{_lib}absl_int128_%{major} = %{EVRD}
-Requires: %{_lib}absl_throw_delegate%{major} = %{EVRD}
-Requires: %{_lib}absl_leak_check_disable%{major} = %{EVRD}
-Requires: %{_lib}absl_time%{major} = %{EVRD}
-Requires: %{_lib}absl_leak_check%{major} = %{EVRD}
-Requires: %{_lib}absl_time_zone%{major} = %{EVRD}
+Requires:	%{_lib}absl_base%{major} = %{EVRD}
+Requires:	%{_lib}absl_bad_any_cast_impl%{major} = %{EVRD}
+Requires:	%{_lib}absl_log_severity%{major} = %{EVRD}
+Requires:	%{_lib}absl_bad_optional_access%{major} = %{EVRD}
+Requires:	%{_lib}absl_malloc_internal%{major} = %{EVRD}
+Requires:	%{_lib}absl_bad_variant_access%{major} = %{EVRD}
+Requires:	%{_lib}absl_periodic_sampler%{major} = %{EVRD}
+Requires:	%{_lib}absl_random_distributions%{major} = %{EVRD}
+Requires:	%{_lib}absl_city%{major} = %{EVRD}
+Requires:	%{_lib}absl_random_internal_distribution_test_util%{major} = %{EVRD}
+Requires:	%{_lib}absl_civil_time%{major} = %{EVRD}
+Requires:	%{_lib}absl_random_internal_platform%{major} = %{EVRD}
+Requires:	%{_lib}absl_cord%{major} = %{EVRD}
+Requires:	%{_lib}absl_random_internal_pool_urbg%{major} = %{EVRD}
+Requires:	%{_lib}absl_debugging_internal%{major} = %{EVRD}
+Requires:	%{_lib}absl_random_internal_randen_hwaes_impl%{major} = %{EVRD}
+Requires:	%{_lib}absl_demangle_internal%{major} = %{EVRD}
+Requires:	%{_lib}absl_random_internal_randen_hwaes%{major} = %{EVRD}
+Requires:	%{_lib}absl_examine_stack%{major} = %{EVRD}
+Requires:	%{_lib}absl_random_internal_randen_slow%{major} = %{EVRD}
+Requires:	%{_lib}absl_exponential_biased%{major} = %{EVRD}
+Requires:	%{_lib}absl_random_internal_randen%{major} = %{EVRD}
+Requires:	%{_lib}absl_failure_signal_handler%{major} = %{EVRD}
+Requires:	%{_lib}absl_random_internal_seed_material%{major} = %{EVRD}
+Requires:	%{_lib}absl_flags_commandlineflag_internal%{major} = %{EVRD}
+Requires:	%{_lib}absl_random_seed_gen_exception%{major} = %{EVRD}
+Requires:	%{_lib}absl_flags_commandlineflag%{major} = %{EVRD}
+Requires:	%{_lib}absl_random_seed_sequences%{major} = %{EVRD}
+Requires:	%{_lib}absl_flags_config%{major} = %{EVRD}
+Requires:	%{_lib}absl_raw_hash_set%{major} = %{EVRD}
+Requires:	%{_lib}absl_flags_internal%{major} = %{EVRD}
+Requires:	%{_lib}absl_raw_logging_internal%{major} = %{EVRD}
+Requires:	%{_lib}absl_flags_marshalling%{major} = %{EVRD}
+Requires:	%{_lib}absl_scoped_set_env%{major} = %{EVRD}
+Requires:	%{_lib}absl_flags_parse%{major} = %{EVRD}
+Requires:	%{_lib}absl_spinlock_wait%{major} = %{EVRD}
+Requires:	%{_lib}absl_flags_private_handle_accessor%{major} = %{EVRD}
+Requires:	%{_lib}absl_stacktrace%{major} = %{EVRD}
+Requires:	%{_lib}absl_flags_program_name%{major} = %{EVRD}
+Requires:	%{_lib}absl_statusor%{major} = %{EVRD}
+Requires:	%{_lib}absl_flags_reflection%{major} = %{EVRD}
+Requires:	%{_lib}absl_status%{major} = %{EVRD}
+Requires:	%{_lib}absl_flags%{major} = %{EVRD}
+Requires:	%{_lib}absl_strerror%{major} = %{EVRD}
+Requires:	%{_lib}absl_flags_usage_internal%{major} = %{EVRD}
+Requires:	%{_lib}absl_str_format_internal%{major} = %{EVRD}
+Requires:	%{_lib}absl_flags_usage%{major} = %{EVRD}
+Requires:	%{_lib}absl_strings_internal%{major} = %{EVRD}
+Requires:	%{_lib}absl_graphcycles_internal%{major} = %{EVRD}
+Requires:	%{_lib}absl_strings%{major} = %{EVRD}
+Requires:	%{_lib}absl_hash%{major} = %{EVRD}
+Requires:	%{_lib}absl_symbolize%{major} = %{EVRD}
+Requires:	%{_lib}absl_hashtablez_sampler%{major} = %{EVRD}
+Requires:	%{_lib}absl_synchronization%{major} = %{EVRD}
+Requires:	%{_lib}absl_int128_%{major} = %{EVRD}
+Requires:	%{_lib}absl_throw_delegate%{major} = %{EVRD}
+Requires:	%{_lib}absl_leak_check_disable%{major} = %{EVRD}
+Requires:	%{_lib}absl_time%{major} = %{EVRD}
+Requires:	%{_lib}absl_leak_check%{major} = %{EVRD}
+Requires:	%{_lib}absl_time_zone%{major} = %{EVRD}
 
 Provides:	%{name}-devel = %{EVRD}
 
@@ -180,7 +180,7 @@ Development headers for %{name}
 #---------------------------------------------------------------------------
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %cmake
@@ -190,16 +190,15 @@ Development headers for %{name}
 %make_install -C build
 
 #add versioning for lib's
-pushd %{buildroot}%{_libdir}
+cd %{buildroot}%{_libdir}
 for file in *.so;
 do
   patchelf --set-soname $file.%{major} $file
-  for f in `patchelf --print-needed $file |grep libabsl_`;
+  for f in $(patchelf --print-needed $file |grep libabsl_);
   do
   patchelf --replace-needed $f $f.%{major} $file
   done
   mv -v $file $file.%{major}
   ln -s $file.%{major} $file
 done
-popd
-
+cd ..
