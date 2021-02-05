@@ -1,3 +1,5 @@
+%global optflags %{optflags} -O3
+
 %define major 0
 %define devname %mklibname absl -d
 
