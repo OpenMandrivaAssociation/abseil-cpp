@@ -4,7 +4,7 @@
 %define devname %mklibname absl -d
 
 Name:		abseil-cpp
-Version:	20200923.3
+Version:	20210324.1
 Release:	1
 Summary:	C++ Common Libraries
 Group:		Development/C++
@@ -107,7 +107,7 @@ Package with library libsbsl_%{1}.so.%{major}. \
 
 %package -n %{devname}
 Summary:	Development files for %{name}
-Group:		Development/Other
+Group:		Development/C++
 Requires:	%{_lib}absl_base%{major} = %{EVRD}
 Requires:	%{_lib}absl_bad_any_cast_impl%{major} = %{EVRD}
 Requires:	%{_lib}absl_log_severity%{major} = %{EVRD}
@@ -168,11 +168,10 @@ Requires:	%{_lib}absl_leak_check_disable%{major} = %{EVRD}
 Requires:	%{_lib}absl_time%{major} = %{EVRD}
 Requires:	%{_lib}absl_leak_check%{major} = %{EVRD}
 Requires:	%{_lib}absl_time_zone%{major} = %{EVRD}
-
 Provides:	%{name}-devel = %{EVRD}
 
 %description -n %{devname}
-Development headers for %{name}
+Development headers for %{name}.
 
 %files -n %{devname}
 %{_includedir}/absl
@@ -195,12 +194,11 @@ Development headers for %{name}
 cd %{buildroot}%{_libdir}
 for file in *.so;
 do
-  patchelf --set-soname $file.%{major} $file
-  for f in $(patchelf --print-needed $file |grep libabsl_);
-  do
-  patchelf --replace-needed $f $f.%{major} $file
-  done
-  mv -v $file $file.%{major}
-  ln -s $file.%{major} $file
+    patchelf --set-soname $file.%{major} $file
+    for f in $(patchelf --print-needed $file |grep libabsl_); do
+	patchelf --replace-needed $f $f.%{major} $file
+    done
+    mv -v $file $file.%{major}
+    ln -s $file.%{major} $file
 done
 cd ..
