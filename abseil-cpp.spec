@@ -11,8 +11,8 @@ Group:		Development/C++
 License:	ASL 2.0
 URL:		https://abseil.io
 Source0:	https://github.com/abseil/abseil-cpp/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:		abseil-cpp-20210324.1-revert-soversion-to-0.patch
 BuildRequires:	cmake
-BuildRequires:	patchelf
 
 %description
 Abseil is an open-source collection of C++ library code designed to augment
@@ -102,6 +102,7 @@ Package with library libsbsl_%{1}.so.%{major}. \
 %local_lib_pkg time
 %local_lib_pkg leak_check
 %local_lib_pkg time_zone
+%local_lib_pkg wyhash
 
 #---------------------------------------------------------------------------
 
@@ -168,6 +169,7 @@ Requires:	%{_lib}absl_leak_check_disable%{major} = %{EVRD}
 Requires:	%{_lib}absl_time%{major} = %{EVRD}
 Requires:	%{_lib}absl_leak_check%{major} = %{EVRD}
 Requires:	%{_lib}absl_time_zone%{major} = %{EVRD}
+Requires:	%{_lib}absl_wyhash%{major} = %{EVRD}
 Provides:	%{name}-devel = %{EVRD}
 
 %description -n %{devname}
@@ -177,6 +179,7 @@ Development headers for %{name}.
 %{_includedir}/absl
 %{_libdir}/cmake/absl
 %{_libdir}/libabsl_*.so
+%{_libdir}/pkgconfig/*.pc
 
 #---------------------------------------------------------------------------
 
@@ -189,16 +192,3 @@ Development headers for %{name}.
 
 %install
 %make_install -C build
-
-#add versioning for lib's
-cd %{buildroot}%{_libdir}
-for file in *.so;
-do
-    patchelf --set-soname $file.%{major} $file
-    for f in $(patchelf --print-needed $file |grep libabsl_); do
-	patchelf --replace-needed $f $f.%{major} $file
-    done
-    mv -v $file $file.%{major}
-    ln -s $file.%{major} $file
-done
-cd ..

@@ -1,0 +1,12 @@
+diff -Naur a/CMake/AbseilHelpers.cmake b/CMake/AbseilHelpers.cmake
+--- a/CMake/AbseilHelpers.cmake	2021-04-20 16:55:14.000000000 +0000
++++ b/CMake/AbseilHelpers.cmake	2021-05-16 12:05:49.275223643 +0000
+@@ -263,7 +263,7 @@
+     if(ABSL_ENABLE_INSTALL)
+       set_target_properties(${_NAME} PROPERTIES
+         OUTPUT_NAME "absl_${_NAME}"
+-        SOVERSION "2103.0.1"
++        SOVERSION 0
+       )
+     endif()
+   else()
