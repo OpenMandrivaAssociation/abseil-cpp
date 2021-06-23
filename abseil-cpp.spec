@@ -5,14 +5,14 @@
 
 Name:		abseil-cpp
 Version:	20210324.2
-Release:	1
+Release:	2
 Summary:	C++ Common Libraries
 Group:		Development/C++
 License:	ASL 2.0
 URL:		https://abseil.io
 Source0:	https://github.com/abseil/abseil-cpp/archive/%{version}/%{name}-%{version}.tar.gz
 Patch0:		abseil-cpp-20210324.1-revert-soversion-to-0.patch
-BuildRequires:	cmake
+BuildRequires:	cmake ninja
 
 %description
 Abseil is an open-source collection of C++ library code designed to augment
@@ -185,10 +185,12 @@ Development headers for %{name}.
 
 %prep
 %autosetup -p1
+CXXFLAGS="%{optflags} -std=gnu++17" \
+%cmake \
+	-G Ninja
 
 %build
-%cmake
-%make_build
+%ninja_build -C build
 
 %install
-%make_install -C build
+%ninja_install -C build
