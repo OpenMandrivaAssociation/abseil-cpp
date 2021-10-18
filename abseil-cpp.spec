@@ -5,14 +5,15 @@
 
 Name:		abseil-cpp
 Version:	20210324.2
-Release:	2
+Release:	3
 Summary:	C++ Common Libraries
 Group:		Development/C++
 License:	ASL 2.0
 URL:		https://abseil.io
 Source0:	https://github.com/abseil/abseil-cpp/archive/%{version}/%{name}-%{version}.tar.gz
 Patch0:		abseil-cpp-20210324.1-revert-soversion-to-0.patch
-BuildRequires:	cmake ninja
+BuildRequires:	cmake
+BuildRequires:	ninja
 
 %description
 Abseil is an open-source collection of C++ library code designed to augment
@@ -36,7 +37,7 @@ and we now want to provide those resources to the C++ community as a whole.
 Summary:	%{summary} \
 Group:		System/Libraries \
 %description -n %{mklibname absl_%1 0} \
-%{summary} \
+%{summary} .\
 Package with library libsbsl_%{1}.so.%{major}. \
 %files -n %{mklibname absl_%1 0} \
 %{_libdir}/libabsl_%{1}.so.%{major} \
@@ -185,8 +186,9 @@ Development headers for %{name}.
 
 %prep
 %autosetup -p1
-CXXFLAGS="%{optflags} -std=gnu++17" \
+
 %cmake \
+	-DCMAKE_CXX_STANDARD=17 \
 	-G Ninja
 
 %build
