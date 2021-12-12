@@ -4,8 +4,8 @@
 %define devname %mklibname absl -d
 
 Name:		abseil-cpp
-Version:	20210324.2
-Release:	3
+Version:	20211102.0
+Release:	1
 Summary:	C++ Common Libraries
 Group:		Development/C++
 License:	ASL 2.0
@@ -103,7 +103,12 @@ Package with library libsbsl_%{1}.so.%{major}. \
 %local_lib_pkg time
 %local_lib_pkg leak_check
 %local_lib_pkg time_zone
-%local_lib_pkg wyhash
+%local_lib_pkg cord_internal
+%local_lib_pkg cordz_functions
+%local_lib_pkg cordz_handle
+%local_lib_pkg cordz_info
+%local_lib_pkg cordz_sample_token
+%local_lib_pkg low_level_hash
 
 #---------------------------------------------------------------------------
 
@@ -170,7 +175,13 @@ Requires:	%{_lib}absl_leak_check_disable%{major} = %{EVRD}
 Requires:	%{_lib}absl_time%{major} = %{EVRD}
 Requires:	%{_lib}absl_leak_check%{major} = %{EVRD}
 Requires:	%{_lib}absl_time_zone%{major} = %{EVRD}
-Requires:	%{_lib}absl_wyhash%{major} = %{EVRD}
+Obsoletes:	%{_lib}absl_wyhash%{major} < %{EVRD}
+Requires:	%{_lib}absl_cord_internal%{major} = %{EVRD}
+Requires:	%{_lib}absl_cordz_functions%{major} = %{EVRD}
+Requires:	%{_lib}absl_cordz_handle%{major} = %{EVRD}
+Requires:	%{_lib}absl_cordz_info%{major} = %{EVRD}
+Requires:	%{_lib}absl_cordz_sample_token%{major} = %{EVRD}
+Requires:	%{_lib}absl_low_level_hash%{major} = %{EVRD}
 Provides:	%{name}-devel = %{EVRD}
 
 %description -n %{devname}
