@@ -1,3 +1,4 @@
+%define cxxstd 17
 %global optflags %{optflags} -O3
 
 %define major 0
@@ -5,7 +6,7 @@
 
 Name:		abseil-cpp
 Version:	20211102.0
-Release:	2
+Release:	3
 Summary:	C++ Common Libraries
 Group:		Development/C++
 License:	ASL 2.0
@@ -198,9 +199,10 @@ Development headers for %{name}.
 %prep
 %autosetup -p1
 
+LDFLAGS="%{optflags} -std=gnu++%{cxxstd}" \
 %cmake \
-	-DCMAKE_CXX_STANDARD=17 \
-	-DABSL_CXX_STANDARD=17 \
+	-DCMAKE_CXX_STANDARD=%{cxxstd} \
+	-DABSL_CXX_STANDARD=%{cxxstd} \
 	-DABSL_PROPAGATE_CXX_STD:BOOL=ON \
 	-G Ninja
 
