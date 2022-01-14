@@ -5,7 +5,7 @@
 
 Name:		abseil-cpp
 Version:	20211102.0
-Release:	1
+Release:	2
 Summary:	C++ Common Libraries
 Group:		Development/C++
 License:	ASL 2.0
@@ -200,10 +200,12 @@ Development headers for %{name}.
 
 %cmake \
 	-DCMAKE_CXX_STANDARD=17 \
+	-DABSL_CXX_STANDARD=17 \
+	-DABSL_PROPAGATE_CXX_STD:BOOL=ON \
 	-G Ninja
 
 %build
-%ninja_build -C build
+%ninja_build -v -C build
 
 %install
 %ninja_install -C build
