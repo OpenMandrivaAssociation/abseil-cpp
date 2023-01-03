@@ -1,11 +1,11 @@
-diff -Naur a/CMake/AbseilHelpers.cmake b/CMake/AbseilHelpers.cmake
---- a/CMake/AbseilHelpers.cmake	2021-04-20 16:55:14.000000000 +0000
-+++ b/CMake/AbseilHelpers.cmake	2021-05-16 12:05:49.275223643 +0000
-@@ -263,7 +263,7 @@
+diff -up abseil-cpp-20220623.1/CMake/AbseilHelpers.cmake.1~ abseil-cpp-20220623.1/CMake/AbseilHelpers.cmake
+--- abseil-cpp-20220623.1/CMake/AbseilHelpers.cmake.1~	2023-01-03 23:40:36.594350345 +0100
++++ abseil-cpp-20220623.1/CMake/AbseilHelpers.cmake	2023-01-03 23:41:41.206673972 +0100
+@@ -281,7 +281,7 @@ Cflags: -I\${includedir}${PC_CFLAGS}\n")
      if(ABSL_ENABLE_INSTALL)
        set_target_properties(${_NAME} PROPERTIES
          OUTPUT_NAME "absl_${_NAME}"
--        SOVERSION "2111.0.0"
+-        SOVERSION "2206.0.0"
 +        SOVERSION 0
        )
      endif()
