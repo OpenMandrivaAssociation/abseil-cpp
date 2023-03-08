@@ -1,18 +1,17 @@
 %define cxxstd 20
 %global optflags %{optflags} -O3
 
-%define major 0
+%define soname %(echo %{version} |cut -b3-6).0.0
 %define devname %mklibname absl -d
 
 Name:		abseil-cpp
-Version:	20220623.1
+Version:	20230125.1
 Release:	1
 Summary:	C++ Common Libraries
 Group:		Development/C++
 License:	ASL 2.0
 URL:		https://abseil.io
 Source0:	https://github.com/abseil/abseil-cpp/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:		abseil-cpp-20210324.1-revert-soversion-to-0.patch
 BuildRequires:	cmake
 BuildRequires:	ninja
 
@@ -40,9 +39,9 @@ Group:		System/Libraries \
 %rename %{mklibname absl_%1 0} \
 %description -n %{mklibname absl_%1} \
 %{summary} .\
-Package with library libsbsl_%{1}.so.%{major}. \
+Package with library libsbsl_%{1}.so.%{soname}. \
 %files -n %{mklibname absl_%1} \
-%{_libdir}/libabsl_%{1}.so.%{major} \
+%{_libdir}/libabsl_%{1}.so.%{soname} \
 }
 
 %local_lib_pkg base
@@ -110,6 +109,25 @@ Package with library libsbsl_%{1}.so.%{major}. \
 %local_lib_pkg cordz_info
 %local_lib_pkg cordz_sample_token
 %local_lib_pkg low_level_hash
+# New in 20230125
+%local_lib_pkg crc32c
+%local_lib_pkg crc_cord_state
+%local_lib_pkg crc_cpu_detect
+%local_lib_pkg crc_internal
+%local_lib_pkg die_if_null
+%local_lib_pkg log_entry
+%local_lib_pkg log_flags
+%local_lib_pkg log_globals
+%local_lib_pkg log_initialize
+%local_lib_pkg log_internal_check_op
+%local_lib_pkg log_internal_conditions
+%local_lib_pkg log_internal_format
+%local_lib_pkg log_internal_globals
+%local_lib_pkg log_internal_log_sink_set
+%local_lib_pkg log_internal_message
+%local_lib_pkg log_internal_nullguard
+%local_lib_pkg log_internal_proto
+%local_lib_pkg log_sink
 
 #---------------------------------------------------------------------------
 
