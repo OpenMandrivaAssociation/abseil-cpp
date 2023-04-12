@@ -5,8 +5,8 @@
 %define devname %mklibname absl -d
 
 Name:		abseil-cpp
-Version:	20230125.1
-Release:	3
+Version:	20230125.2
+Release:	1
 Summary:	C++ Common Libraries
 Group:		Development/C++
 License:	ASL 2.0
