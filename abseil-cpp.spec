@@ -5,7 +5,7 @@
 %define devname %mklibname absl -d
 
 Name:		abseil-cpp
-Version:	20230125.3
+Version:	20230802.0
 Release:	1
 Summary:	C++ Common Libraries
 Group:		Development/C++
@@ -40,6 +40,9 @@ BuildRequires:	ninja
 	log_internal_conditions log_internal_format log_internal_globals\\\
 	log_internal_log_sink_set log_internal_message log_internal_nullguard\\\
 	log_internal_proto log_sink
+
+# Added in 20230802.0
+%global libs %{libs} kernel_timeout_internal string_view
 
 %(for i in %{libs}; do
 	cat <<EOF
