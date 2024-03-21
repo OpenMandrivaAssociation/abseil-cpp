@@ -5,7 +5,7 @@
 %define devname %mklibname absl -d
 
 Name:		abseil-cpp
-Version:	20230802.1
+Version:	20240116.1
 Release:	1
 Summary:	C++ Common Libraries
 Group:		Development/C++
@@ -27,7 +27,7 @@ BuildRequires:	ninja
 	flags_commandlineflag random_seed_sequences flags_config\\\
 	raw_hash_set flags_internal raw_logging_internal flags_marshalling\\\
 	scoped_set_env flags_parse spinlock_wait flags_private_handle_accessor\\\
-	stacktrace flags_program_name statusor flags_reflection status flags\\\
+	stacktrace flags_program_name statusor flags_reflection status\\\
 	strerror flags_usage_internal str_format_internal flags_usage\\\
 	strings_internal graphcycles_internal strings hash symbolize\\\
 	hashtablez_sampler synchronization int128 throw_delegate time\\\
@@ -43,6 +43,9 @@ BuildRequires:	ninja
 
 # Added in 20230802.0
 %global libs %{libs} kernel_timeout_internal string_view
+
+# Added in 20240116.1
+%global libs %{libs} log_internal_fnmatch vlog_config_internal
 
 %(for i in %{libs}; do
 	cat <<EOF
