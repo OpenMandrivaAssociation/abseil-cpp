@@ -5,7 +5,7 @@
 %define devname %mklibname absl -d
 
 Name:		abseil-cpp
-Version:	20240722.0
+Version:	20250127.0
 Release:	1
 Summary:	C++ Common Libraries
 Group:		Development/C++
@@ -49,6 +49,9 @@ BuildRequires:	ninja
 
 # Added in 20240722.0
 %global libs %{libs} decode_rust_punycode demangle_rust poison utf8_for_code_point
+
+# Added in 20250127.0
+%global libs %{libs} log_internal_structured_proto tracing_internal
 
 %(for i in %{libs}; do
 	cat <<EOF
