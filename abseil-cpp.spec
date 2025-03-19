@@ -5,7 +5,7 @@
 %define devname %mklibname absl -d
 
 Name:		abseil-cpp
-Version:	20250127.0
+Version:	20250127.1
 Release:	1
 Summary:	C++ Common Libraries
 Group:		Development/C++
