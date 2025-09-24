@@ -5,7 +5,7 @@
 %define devname %mklibname absl -d
 
 Name:		abseil-cpp
-Version:	20250127.1
+Version:	20250814.1
 Release:	1
 Summary:	C++ Common Libraries
 Group:		Development/C++
@@ -15,10 +15,10 @@ Source0:	https://github.com/abseil/abseil-cpp/archive/%{version}/%{name}-%{versi
 BuildRequires:	cmake
 BuildRequires:	ninja
 
-%global libs base bad_any_cast_impl log_severity bad_optional_access\\\
-	malloc_internal bad_variant_access periodic_sampler random_distributions\\\
+%global libs base log_severity\\\
+	malloc_internal periodic_sampler random_distributions\\\
 	city random_internal_distribution_test_util civil_time\\\
-	random_internal_platform cord random_internal_pool_urbg\\\
+	random_internal_platform cord\\\
 	debugging_internal random_internal_randen_hwaes_impl\\\
 	demangle_internal random_internal_randen_hwaes examine_stack\\\
 	random_internal_randen_slow exponential_biased random_internal_randen\\\
@@ -32,7 +32,7 @@ BuildRequires:	ninja
 	strings_internal graphcycles_internal strings hash symbolize\\\
 	hashtablez_sampler synchronization int128 throw_delegate time\\\
 	leak_check time_zone cord_internal cordz_functions cordz_handle\\\
-	cordz_info cordz_sample_token low_level_hash
+	cordz_info cordz_sample_token
 
 # Added in 20230125.1
 %global libs %{libs} crc32c crc_cord_state crc_cpu_detect crc_internal die_if_null\\\
@@ -52,6 +52,15 @@ BuildRequires:	ninja
 
 # Added in 20250127.0
 %global libs %{libs} log_internal_structured_proto tracing_internal
+
+# Added in 20250814.1
+%global libs %{libs} hashtable_profiler profile_builder random_internal_entropy_pool
+
+# Removed in 20250127.0
+%global removed_libs leak_check_disable wyhash
+# Removed in 20250814.1:
+%global removed_libs %{removed_libs} base_any_cast_impl bad_optional_access\\\
+	bad_variant_access random_internal_pool_urbg low_level_hash
 
 %(for i in %{libs}; do
 	cat <<EOF
@@ -93,8 +102,9 @@ Group:		Development/C++
 %(for i in %{libs}; do
 	echo Requires: %{mklibname absl_${i}} = %{EVRD}
 done)
-Obsoletes:	%{_lib}absl_leak_check_disable < %{EVRD}
-Obsoletes:	%{_lib}absl_wyhash < %{EVRD}
+%(for i in %{removed_libs}; do
+	echo Obsoletes: %{mklibname absl_${i}} < %{EVRD}
+done)
 Provides:	%{name}-devel = %{EVRD}
 
 %description -n %{devname}
