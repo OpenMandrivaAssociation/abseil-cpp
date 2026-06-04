@@ -5,7 +5,7 @@
 %define devname %mklibname absl -d
 
 Name:		abseil-cpp
-Version:	20250814.1
+Version:	20260526.0
 Release:	1
 Summary:	C++ Common Libraries
 Group:		Development/C++
@@ -42,7 +42,7 @@ BuildRequires:	ninja
 	log_internal_proto log_sink
 
 # Added in 20230802.0
-%global libs %{libs} kernel_timeout_internal string_view
+%global libs %{libs} kernel_timeout_internal
 
 # Added in 20240116.1
 %global libs %{libs} log_internal_fnmatch vlog_config_internal
@@ -56,11 +56,16 @@ BuildRequires:	ninja
 # Added in 20250814.1
 %global libs %{libs} hashtable_profiler profile_builder random_internal_entropy_pool
 
+# Added in 20260526.0
+%global libs %{libs} clock_interface generic_printer_internal source_location status_builder
+
 # Removed in 20250127.0
 %global removed_libs leak_check_disable wyhash
 # Removed in 20250814.1:
 %global removed_libs %{removed_libs} base_any_cast_impl bad_optional_access\\\
 	bad_variant_access random_internal_pool_urbg low_level_hash
+# Removed in 20260526.0:
+%global removed_libs %{removed_libs} string_view
 
 %(for i in %{libs}; do
 	cat <<EOF
