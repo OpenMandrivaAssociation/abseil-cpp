@@ -5,7 +5,7 @@
 %define devname %mklibname absl -d
 
 Name:		abseil-cpp
-Version:	20260526.0
+Version:	20260817.0
 Release:	1
 Summary:	C++ Common Libraries
 Group:		Development/C++
@@ -35,7 +35,7 @@ BuildRequires:	ninja
 	cordz_info cordz_sample_token
 
 # Added in 20230125.1
-%global libs %{libs} crc32c crc_cord_state crc_cpu_detect crc_internal die_if_null\\\
+%global libs %{libs} crc32c crc_cord_state crc_internal die_if_null\\\
 	log_entry log_flags log_globals log_initialize log_internal_check_op\\\
 	log_internal_conditions log_internal_format log_internal_globals\\\
 	log_internal_log_sink_set log_internal_message log_internal_nullguard\\\
@@ -59,6 +59,9 @@ BuildRequires:	ninja
 # Added in 20260526.0
 %global libs %{libs} clock_interface generic_printer_internal source_location status_builder
 
+# Added in 20260817.0
+%global libs %{libs} base_cpu_detect hardening
+
 # Removed in 20250127.0
 %global removed_libs leak_check_disable wyhash
 # Removed in 20250814.1:
@@ -66,6 +69,8 @@ BuildRequires:	ninja
 	bad_variant_access random_internal_pool_urbg low_level_hash
 # Removed in 20260526.0:
 %global removed_libs %{removed_libs} string_view
+# Removed in 20260817.0 (moved into absl/base):
+%global removed_libs %{removed_libs} crc_cpu_detect
 
 %(for i in %{libs}; do
 	cat <<EOF
